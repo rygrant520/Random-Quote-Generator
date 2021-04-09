@@ -48,40 +48,46 @@ let quotes = [
  * `getRandomQuote` function
 ***/
 
-getRandomQuote (){
-let number = Math.random()
-let locationofInfo = quotes[Math.floor(number*5)];
+function getRandomQuote (){
+  let number = Math.random()
+  let locationofInfo = quotes[Math.floor(number*5)];
+  
+  const getRandomQuote = locationofInfo.quote;
+  const getRandomQuoteSource = locationofInfo.source;
+  let getRandomQuoteCitation  = locationofInfo.citation;
+  let getRandomQuoteYear = locationofInfo.year;
+  
+  return getRandomQuote
+  return getRandomQuoteSource
+  return getRandomQuoteCitation
+  return getRandomQuoteYear
+  
+  };
+  
+  
+  /***
+   * `printQuote` function
+  ***/
+  
+  let html = '';
 
-const getRandomQuote = locationofInfo.quote;
-const getRandomQuoteSource = locationofInfo.source;
-let getRandomQuoteCitation  = locationofInfo.citation;
-let getRandomQuoteYear = locationofInfo.year;
-console.log(locationofInfo);
-console.log(getRandomQuote);
-console.log(getRandomQuoteSource);
-console.log(getRandomQuoteCitation);
-console.log(getRandomQuoteYear);
+  function printQuote(){
+getRandomQuote()
+    
+html += `
+    <p class= "quote"> ${getRandomQuote} </p>
+    <p class= "source"> ${getRandomQuoteSource}, ${getRandomQuoteCitation}, ${getRandomQuoteYear}</p>
 
-const quoteInfo = locationofInfo.source + ', ' + locationofInfo.citation + ', ' + locationofInfo.year
-console.log(quoteInfo)
+`;
+  }
 
-};
-
-
-/***
- * `printQuote` function
-***/
-
-function printQuote(){
-document.querySelector('p.quote').innerHTML = getRandomQuote;
-document.querySelector('p.source').innerHTML = quoteInfo;
-
-};
-
-
-/***
- * click event listener for the print quote button
- * DO NOT CHANGE THE CODE BELOW!!
-***/
-
-document.getElementById('load-quote').addEventListener("click", printQuote, false);
+//document.querySelector('div').insertAdjacentHTML('beforeend', html);
+  
+  
+  
+  /***
+   * click event listener for the print quote button
+   * DO NOT CHANGE THE CODE BELOW!!
+  ***/
+  
+  document.getElementById('load-quote').addEventListener("click", printQuote, false);
