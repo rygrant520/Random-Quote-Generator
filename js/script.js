@@ -3,13 +3,10 @@ Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
 
-// For assistance: 
-  // Check the "Project Resources" section of the project instructions
-  // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
 
-/*** 
- * `quotes` array 
-***/
+
+//creates an array of objects containing information regarding specific quotes.
+
 let quotes = [
   {
   quote: "The greatest glory in living lies not in never falling, but in rising every time we fall.",
@@ -52,8 +49,8 @@ let quotes = [
 /***
  * `getRandomQuote` function
 ***/
-
-
+// function calls the Math.random function and sets the ceiling to the number of quotes and round down.
+// then take that number and use it to designate the random object location in the quotes array
 
 function getRandomQuote (){
    const randomNumber = Math.floor(Math.random() * quotes.length);
@@ -62,21 +59,23 @@ function getRandomQuote (){
     
 
 };
-
-//console.log(getRandomQuote())
-  
-  
   
   /***
    * `printQuote` function
   ***/
-
-  
+/* calls randomColor so that both are completed during the call from the eventlistener.
+takes the return from getRandomQuote and sets it as a const.
+then lets htmlString equal the data we are inserting into HTML.
+two if statements checking to see if there is data in the citation and year property.
+if so, then the function adds the <span string to the original htmlString via +=
+Then we add the final htmlString contents.
+Then we call the data in quote_box and set it equal to htmlString
+  */
   
   function printQuote() {
   randomColor()
-  const randomQuote_object = getRandomQuote();
-  let htmlString = `
+    const randomQuote_object = getRandomQuote();
+    let htmlString = `
     <p class= 'quote'> ${randomQuote_object.quote} </p>
     <p class= 'source'> ${randomQuote_object.source}
       
@@ -101,33 +100,32 @@ document.getElementById('quote-box').innerHTML = htmlString;
 
   };
 
-  
+// calls the printQuote function to randomly change every 10 seconds
 
 const randomPrint = setInterval(printQuote, 10000);
 
 
 
-
-
+/*random color function sets an array of colors
+call a Math.random() set the ceiling at the length of the array and get the floor
+color_Choice picks uses the color_Number to pick a random location on the array
+we then grab the document location we need to input the color and set it equal to the color_Choice
+*/
 
 function randomColor(){
 
 let colorPick = [
-'#E52424',
-'#243EE5',
-'#C2A453', 
-'#D591CA',
-'#21D567'
+  '#E52424',
+  '#243EE5',
+  '#C2A453', 
+  '#D591CA',
+  '#21D567'
 ]
 let color_Number = Math.floor(Math.random() * colorPick.length);
 let color_Choice = colorPick[color_Number];
 document.body.style.backgroundColor = color_Choice;
 
 }
-
-
-
-
 
 
   /***
