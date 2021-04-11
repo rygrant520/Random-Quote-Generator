@@ -72,7 +72,8 @@ function getRandomQuote (){
   ***/
 
   
-  const myInterval = setInterval(function printQuote() {
+  
+  function printQuote() {
   randomColor()
   const randomQuote_object = getRandomQuote();
   let htmlString = `
@@ -98,11 +99,11 @@ document.getElementById('quote-box').innerHTML = htmlString;
 
 }
 
-  },10000);
+  };
 
   
 
-
+const randomPrint = setInterval(printQuote, 10000);
 
 
 
@@ -135,5 +136,3 @@ document.body.style.backgroundColor = color_Choice;
   ***/
   
   document.getElementById('load-quote').addEventListener("click", printQuote, false);
-
-  clearInterval(myInterval);
